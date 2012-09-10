@@ -3,19 +3,41 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<script language="Javascript" type="text/javascript" src="js/misc.js"></script>
+	<script language="Javascript" type="text/javascript" src="js/jquery.js"></script>
+	<script language="Javascript" type="text/javascript" src="js/countdown.js"></script>
 	<link rel="Stylesheet" type="text/css" href="style/main.css"></link>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Bersatunya endiyan dan lalitia</title>
+	<title>Countdown</title>
+
+
 
 
 </head>
 
 <body>
 
-
-	<div></div>
-
+<div id="timeBoard">
+	<div id="days">1</div>
+	<div id="hours">1</div>
+	<div id="minutes">1</div>
+	<div id="seconds">1</div>
+</div>
 </body>
 
+<script>
+	var toYear = 2012;
+	var toMonth = 9;
+	var toDay = 27;
+	var toHour = 6;
+	var toMinute = 30;
+	var toSecond = 0;
+
+$(function(){
+
+	
+	$('#timeBoard').countDown();
+						
+});
+
+</script>
 </html>
