@@ -1,1 +1,1 @@
-# jQuery countdown Plugin by endiyan rakhmanda
+## jQuery countdown Plugin by endiyan rakhmanda
