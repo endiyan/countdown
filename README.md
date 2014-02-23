@@ -7,13 +7,12 @@
 Accepts a javascript Date object. The target time of your countdown.
 
 * ### topLevelTimeUnit :
-Accepts one of the following string values:
+Defines the biggest time unit for the countdown. Accepts one of the following string values:
     * day
     * hour
     * minute
     * second
 
-defines the biggest time unit for the countdown
 
 * ### onFinish:
 A callback function, which will be called if the countdown ends
