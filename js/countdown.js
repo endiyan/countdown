@@ -9,33 +9,36 @@
 		//Method calling logic
 		var today = new Date();
 		var todayInMs = today.getTime();
-		var targetTime = opts.date;
+		var targetTime = opts.date.getTime();
 		var diff = targetTime - todayInMs;
-		var diffInSec = diff/1000;
-		var diffInDays = diffInSec/60/60/24;
+		var newDate;
 
+		function incrementBySecond(second)
+		{	
+			diff = diff - 1000;
+			return new Date(diff);
+		}
 		var t = setInterval(function() {
-			diffInSec = incrementBySecond(diffInSec);
+			newDate = incrementBySecond(diff);
 			$this.each (function(){
-				$(this).html(diffInSec);
+				$('.cdTimeBoard .cdDay').each(function() {
+					$(this).html(newDate.getDate());
+				});
+				$('.cdTimeBoard .cdHour').each(function() {
+					$(this).html(newDate.getHours());
+				});
+				$('.cdTimeBoard .cdMinute').each(function() {
+					$(this).html(newDate.getMinutes());
+				});
+				$('.cdTimeBoard .cdSecond').each(function() {
+					$(this).html(newDate.getSeconds());
+				});
 			});
 		}, 1000);
-
-
-		
 	};
-	
-	//public function
-	$.fn.anotherMethod = function()
-	{
-		console.log('doAnotherMethod');
-	}
 
 	//private function
-	function incrementBySecond(second)
-	{	
-		return second - 1;
-	}
+
 
 	$.fn.countDown.defaults = {
 		date: new Date(2014, 5, 1, 0, 0, 0),
