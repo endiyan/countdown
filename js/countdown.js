@@ -1,21 +1,24 @@
 (function( $ ) {
 
-	$.fn.countDown = function(options) {
+	$.fn.countItDown = function(options) {
 
 		var $this = $(this);
 
-		var opts = $.extend({}, $.fn.countDown.defaults, options);
-
+		var opts = $.extend({}, $.fn.countItDown.defaults, options);
 
 		//Method calling logic
 		var today = new Date();
 		var todayInMs = today.getTime();
 		var targetTime = opts.date.getTime();
 		var diff = targetTime - todayInMs;
-		
 
-		var t = setInterval(function() {
-			
+		var interval = setInterval(function() {
+		
+			if (diff <= 0)
+			{
+				clearInterval(interval);
+				opts.onFinish.call();
+			}
 			diff = incrementBySecond(diff);
 			var restMs = diff;
 			var topUnitAndRestms;
@@ -59,6 +62,9 @@
 				}
 			});
 		}, 1000);
+
+
+		return this;
 	};
 
 	//private function
@@ -91,9 +97,10 @@
 		return minutesAndRestMs;
 	}
 
-	$.fn.countDown.defaults = {
+	$.fn.countItDown.defaults = {
 		date 				: new Date(2014, 5, 1, 0, 0, 0),
-		topLevelTimeUnit	: 'day'
+		topLevelTimeUnit	: 'day',
+		onFinish				: function() {alert('Count down finish. Yeay!')}
 	}
 
 })( jQuery );

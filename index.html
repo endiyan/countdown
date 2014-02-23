@@ -3,42 +3,29 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<script language="Javascript" type="text/javascript" src="js/jquery.js"></script>
+	<script language="Javascript" type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script language="Javascript" type="text/javascript" src="js/countdown.js"></script>
-	<script language="Javascript" type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-	<link rel="Stylesheet" type="text/css" href="style/main.css"></link>
-	<link rel="Stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"></link>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Countdown</title>	
+	<title>CountItDown</title>	
 </head>
-
 <body>
-
-</div>
 <div id="timeBoard" class="cdTimeBoard">
-	<div class="cdYear">1</div>
-	<div class="cdMonth">1</div>
-	<div class="cdDay">1</div>
-	<div class="cdHour">1</div>
-	<div class="cdMinute">1</div>
-	<div class="cdSecond">1</div>
+	<h1>Counting down :</h1>
+	<h2><span class="cdDay">0</span> Days</h2>
+	<h2><span class="cdHour">0</span> Hours</h2>
+	<h2><span class="cdMinute">0</span> Minutes</h2>
+	<h2><span class="cdSecond">0</span> Seconds</h2>
 </div>
-<div class="timeBoard"></div>
-<div id="draggable" class="ui-widget-content">
-  <p>Drag me around</p>
-</div>
-
 </body>
-
 <script>
-
-$('.cdTimeBoard').countDown({
-	date : new Date(2014, 1, 23, 9, 11, 0),	
-	topLevelTimeUnit : 'day'
+function onFinish()
+{
+	alert("Yeay");
+}
+$('.cdTimeBoard').countItDown({
+	date : new Date(2014, 1, 23, 9, 45, 0),	
+	topLevelTimeUnit : 'day',
+	onFinish : onFinish
 });	
-$( "#draggable" ).draggable();
-	
-
 </script>
 </html>
