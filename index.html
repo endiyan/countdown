@@ -7,37 +7,29 @@
 	<script language="Javascript" type="text/javascript" src="js/countdown.js"></script>
 	<link rel="Stylesheet" type="text/css" href="style/main.css"></link>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Countdown</title>
-
-
-
-
+	<title>Countdown</title>	
 </head>
 
 <body>
 
-<div id="timeBoard">
+</div>
+<div id="timeBoard" class="timeBoard">
 	<div id="days">1</div>
 	<div id="hours">1</div>
 	<div id="minutes">1</div>
 	<div id="seconds">1</div>
 </div>
+<div class="timeBoard"></div>
 </body>
 
 <script>
-	var toYear = 2012;
-	var toMonth = 9;
-	var toDay = 27;
-	var toHour = 6;
-	var toMinute = 30;
-	var toSecond = 0;
 
-$(function(){
-
+$('.timeBoard').countDown({
+		year: 2014,
+		month: 2,
+		day: 20
+}	);	
 	
-	$('#timeBoard').countDown();
-						
-});
 
 </script>
 </html>

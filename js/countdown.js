@@ -1,52 +1,46 @@
 (function( $ ) {
 
-	var methods = {
-	
-		init: function(){
-		
-			var now = new Date();
-			var toTime = new Date(toYear,
-								  toMonth,
-								  toDay,
-								  toHour,
-								  toMinute,
-								  toSecond,
-								  0);
-			
-			dSec = now.getTime();
-			methods.countdown(dSec);
-			
-		},
-		
-		countdown: function(dSec){
+	$.fn.countDown = function(options) {
 
-			console.log(dSec);
-			if (dSec > 0)
-			{
-				var dDate = new Date(dSec);
-				$('#days').html(dDate.getDay());
-				$('#hours').html(dDate.getHours());
-				$('#minutes').html(dDate.getMinutes());
-				$('#seconds').html(dDate.getSeconds());
-				setTimeout(function() {methods.countdown(dSec-1)}, 1000);
-				return this; 			  
-			}
-			
-		}
-	};
+		var $this = $(this);
 
+		var opts = $.extend({}, $.fn.countDown.defaults, options);
 
-	$.fn.countDown = function(method) {
 		//Method calling logic
-		if (methods[method]) {
-			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-		}
-		else if (typeof method === 'object' || !method){
-			return methods.init.apply(this, arguments);
-		} else {
-			$.error('Method' + method + ' does not exist on jQuery.countdown');
-		}
+		var today = new Date();
+		var todayInMs = today.getTime();
+		var targetTime = opts.date;
+		var diff = targetTime - todayInMs;
+		var diffInSec = diff/1000;
+		var diffInDays = diffInSec/60/60/24;
+
+		var t = setInterval(function() {
+			diffInSec = incrementBySecond(diffInSec);
+			$this.each (function(){
+				$(this).html(diffInSec);
+			});
+		}, 1000);
+
+
+		
 	};
 	
+	//public function
+	$.fn.anotherMethod = function()
+	{
+		console.log('doAnotherMethod');
+	}
+
+	//private function
+	function incrementBySecond(second)
+	{	
+		return second - 1;
+	}
+
+	$.fn.countDown.defaults = {
+		date: new Date(2014, 5, 1, 0, 0, 0),
+		gmt : "+1"
+	}
+
 })( jQuery );
 
